@@ -1,4 +1,5 @@
 .clj-kondo/.cache
+.clj-kondo/
 .lsp/.cache
 .nrepl-*
 .shadow-cljs/
