@@ -4,7 +4,7 @@
     [hoplon.dom]))
 
 (defn mount-components []
-  (.replaceChildren (.getElementById js/document "app") (view/hello)))
+  (.replaceChildren (.getElementById js/document "app") (view/cuerpo)))
 
 (defn start []
   (mount-components)
