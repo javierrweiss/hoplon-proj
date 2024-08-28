@@ -14,7 +14,8 @@
 (j/defc paciente-actual {:nombre "Pedro Martínez"
                          :historia-clinica 1452789
                          :historia-clinica-unica 75241
-                         :cama "B"})
+                         :cama "B"
+                         :fecha (-> (js/Date.) .toLocaleDateString)})
 
 (defn paciente
   []
@@ -28,7 +29,9 @@
                     (h/div
                      (h/label "HCU: ") (h/span (:historia-clinica-unica @paciente-actual)))
                     (h/div
-                     (h/label "Cama: ") (h/span (:cama @paciente-actual))))))
+                     (h/label "Cama: ") (h/span (:cama @paciente-actual)))
+                    (h/div
+                     (h/label "Fecha: ") (h/span (:fecha @paciente-actual))))))
 
 (defn encabezado
   []
@@ -116,7 +119,49 @@
 
 (defn signos-vitales-paciente
   []
-  )
+  (formulario {:id "signos-vitales"}
+              (h/div
+               (h/label "Frecuencia respiratoria"))
+              (h/div
+               (h/input
+                :type "text"
+                :value (:frecuencia-respiratoria @signos-vitales)
+                :change #(swap! signos-vitales assoc :frecuencia-respiratoria (-> % .-target .-value))))
+              (h/div
+               (h/label "Tipo respiración"))
+              (h/div
+               (h/input
+                :type "text"
+                :value (:tipo-respiracion @signos-vitales)
+                :change #(swap! signos-vitales assoc :tipo-respiracion (-> % .-target .-value))))
+              (h/div 
+               (h/label "Riesgo operatorio"))
+              (h/div
+               (h/input
+                :type "text"
+                :value (:riesgo-operatorio @signos-vitales)
+                :change #(swap! signos-vitales assoc :riesgo-operatorio (-> % .-target .-value))))
+              (h/div 
+               (h/label "Pulso"))
+              (h/div
+               (h/input
+                :type "text"
+                :value (:pulso @signos-vitales)
+                :change #(swap! signos-vitales assoc :pulso (-> % .-target .-value))))
+              (h/div
+               (h/label "Presión arterial actual"))
+              (h/div
+               (h/input
+                :type "text"
+                :value (:presion-arterial-actual @signos-vitales)
+                :change #(swap! signos-vitales assoc :presion-arterial-actual (-> % .-target .-value))))
+              (h/div
+               (h/label "Presión arterial habitual"))
+              (h/div
+               (h/input
+                :type "text"
+                :value (:presion-arterial-habitual @signos-vitales)
+                :change #(swap! signos-vitales assoc :presion-arterial-habitual (-> % .-target .-value))))))
 
 
 
@@ -131,7 +176,8 @@
   (paciente)
   (ficha-anestesica 
    (ingreso-patologias)
-   (ingreso-personal-medico))))
+   (ingreso-personal-medico)
+   (signos-vitales-paciente))))
 
 
 ;;;; DEBUG ;;;
