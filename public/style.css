@@ -91,3 +91,15 @@ img {
     box-sizing: border-box;
     border: 1rem outset var(--urarian-blue-color);
 }
+
+footer {
+    background-color: var(--wine-color);
+    color: white;
+    font-family: var(--font1);
+    font-weight: bold;
+}
+
+footer > .menu {
+    align-items: center;
+    justify-content: center;
+}

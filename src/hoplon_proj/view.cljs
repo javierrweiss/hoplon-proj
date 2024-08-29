@@ -164,11 +164,22 @@
                 :change #(swap! signos-vitales assoc :presion-arterial-habitual (-> % .-target .-value))))))
 
 
-
 (h/defelem ficha-anestesica [_ elems]
   (h/div {:class "grilla-ficha-anestesica"}
          (h/for-tpl [elem elems]
                     (h/div elem))))
+
+(defn footer 
+  []
+  (h/footer
+   (h/div {:class "menu"}
+          (h/div
+           (h/span "Sanatorio Colegiales"))
+          (h/div
+           (h/span "Conde 849"))
+          (h/div
+           (h/span "@javierweiss84")))))
+
 
 (h/defelem cuerpo [_ _] 
  (h/main
@@ -177,7 +188,8 @@
   (ficha-anestesica 
    (ingreso-patologias)
    (ingreso-personal-medico)
-   (signos-vitales-paciente))))
+   (signos-vitales-paciente))
+  (footer)))
 
 
 ;;;; DEBUG ;;;
